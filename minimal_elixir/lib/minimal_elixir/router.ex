@@ -4,29 +4,29 @@ defmodule MinimalElixir.Router do
   plug(:match)
   plug(:dispatch)
 
-  get "/bot" do
+  get "/apple" do
     conn
     |> put_resp_content_type("application/json")
-    |> send_resp(200, Poison.encode!(message()))
+    |> send_resp(200, Poison.encode!(message_apple()))
   end
 
-  get "/human" do
+  get "/orange" do
     conn
     |> put_resp_content_type("application/json")
-    |> send_resp(200, Poison.encode!(message_human()))
+    |> send_resp(200, Poison.encode!(message_orange()))
   end
 
-  defp message do
+  defp message_apple do
     %{
       response_type: "in_channel",
-      text: "Hello from BOT :)"
+      text: "Hello from apples :)"
     }
   end
 
-  defp message_human do
+  defp message_orange do
     %{
       reponse_type: "in_channel",
-      text: "Hello human ò.ó"
+      text: "Hello from oranges"
     }
   end
 end
